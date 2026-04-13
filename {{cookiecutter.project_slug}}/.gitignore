@@ -1,0 +1,8 @@
+{{cookiecutter.module_name}}/**/*.ipynb
+{{cookiecutter.module_name}}/*.ipynb
+.ipynb_checkpoints/
+__pycache__/
+*.egg-info/
+.venv/
+dist/
+.env

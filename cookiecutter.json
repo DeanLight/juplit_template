@@ -1,0 +1,8 @@
+{
+  "project_name": "My Juplit Project",
+  "project_slug": "my_juplit_project",
+  "module_name": "my_juplit_project",
+  "author": "Your Name",
+  "python_version": ">=3.12",
+  "juplit_version": ">=0.1.0"
+}
