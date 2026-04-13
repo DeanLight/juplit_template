@@ -4,10 +4,30 @@ A [cookiecutter](https://cookiecutter.readthedocs.io/) template for starting a n
 
 ## Installation
 
-Install cookiecutter using uv:
+Install [Cookiecutter](https://cookiecutter.readthedocs.io/) so the `cookiecutter` command is available. Pick one method:
+
+**uv** (matches the rest of this workflow):
 
 ```bash
 uv tool install cookiecutter
+```
+
+**pip** (any Python environment):
+
+```bash
+pip install cookiecutter
+```
+
+**pipx** (isolated CLI install):
+
+```bash
+pipx install cookiecutter
+```
+
+**Homebrew** (macOS / Linux):
+
+```bash
+brew install cookiecutter
 ```
 
 ## Usage

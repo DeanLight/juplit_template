@@ -4,5 +4,5 @@
   "module_name": "my_juplit_project",
   "author": "Your Name",
   "python_version": ">=3.12",
-  "juplit_version": ">=0.1.0"
+  "juplit_version": ">=0.0.1"
 }
