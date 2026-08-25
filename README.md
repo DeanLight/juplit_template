@@ -51,7 +51,7 @@ cookiecutter path/to/juplit_template/
 | `module_name` | my_juplit_project | Python module directory name |
 | `author` | Your Name | Package author |
 | `python_version` | >=3.12 | Python version constraint |
-| `juplit_version` | >=0.1.0 | juplit version constraint |
+| `juplit_version` | >=0.1.0 | juplit version constraint (artifact notebooks need >=0.1.0) |
 
 ## After generation
 
@@ -67,4 +67,5 @@ poe sync             # generate .ipynb files from .py sources
 - Edit `.py` files (jupytext percent format) — these are your source of truth
 - Run `poe sync` to sync changes into `.ipynb` notebooks
 - Run `poe clean` to remove all `.ipynb` files (useful before AI agent work)
-- `.ipynb` files are gitignored by default
+- `.ipynb` files are gitignored by default — except artifact notebooks, whose outputs are the deliverable
+- Run `poe check` (also wired as a pre-commit hook and a CI step) to catch committed outputs that no longer match their code
