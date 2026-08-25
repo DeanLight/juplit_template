@@ -6,6 +6,7 @@
 uv sync      # install dependencies
 poe init     # install git hooks
 poe nb       # generate .ipynb notebooks from .py source files
+poe skill    # teach Claude Code the juplit workflow (re-run after upgrading juplit)
 ```
 
 ## Workflow
@@ -18,6 +19,7 @@ poe nb       # generate .ipynb notebooks from .py source files
 | `poe test` | Run tests |
 | `poe check` | Fail if a committed notebook's outputs contradict its `.py` |
 | `poe html <nb>` | Render a notebook to standalone HTML |
+| `poe skill` | Install/refresh the juplit skill so Claude Code knows the workflow |
 
 ### Editing notebooks
 
