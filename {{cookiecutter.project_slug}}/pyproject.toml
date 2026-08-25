@@ -32,12 +32,20 @@ sync         = {cmd = "juplit sync", help = "Sync .py<->ipynb for all paired not
 nb           = {cmd = "juplit nb",   help = "Generate .ipynb from .py files (run after cloning)"}
 clean        = {cmd = "juplit clean",help = "Sync then delete all .ipynb files"}
 test         = {cmd = "pytest",      help = "Run tests"}
+check        = {cmd = "juplit check", help = "Fail if a committed notebook's outputs contradict its .py"}
+html         = {cmd = "juplit html",  help = "Render a notebook to standalone HTML (nbconvert)"}
 docs         = {cmd = "mkdocs serve",          help = "Serve docs locally for preview"}
 docs-build   = {cmd = "mkdocs build",          help = "Build docs site"}
 docs-deploy  = {cmd = "mkdocs gh-deploy --force", help = "Deploy docs to GitHub Pages"}
 
 [tool.juplit]
-notebook_src_dir = "{{cookiecutter.module_name}}"
+notebook_src_dirs = ["{{cookiecutter.module_name}}", "docs"]
+
+# Pairs whose .ipynb is committed WITH its outputs, because the outputs are the
+# deliverable (experiment notebooks). Their outputs survive nb / sync / clean, and
+# `juplit check` fails if they stop matching the .py that produced them.
+# Remember to un-ignore each one in .gitignore — see the comment there.
+artifact_notebooks = []   # e.g. ["experiments/**/*.py"]
 
 [tool.jupytext]
 formats = "ipynb,py:percent"
