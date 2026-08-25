@@ -56,7 +56,7 @@ Component by component:
 **Cut outright:**
 
 - **An example `experiments/` notebook** — spec out of scope: *"a template is a file you copy"*. An example artifact notebook would also have to ship committed outputs, which cookiecutter cannot produce.
-- **A `poe kernel` / `poe run` task** — they take a notebook path and a snippet; they are agent commands, used as `juplit …` directly. Putting them in the poe table would imply a repo-wide default that does not exist.
+- **A `poe kernel` / `poe try` task** — they take a notebook path or a snippet; they are agent commands, used as `juplit …` directly. Putting them in the poe table would imply a repo-wide default that does not exist.
 
 ---
 
