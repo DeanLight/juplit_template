@@ -25,19 +25,38 @@ configuration, and everything here is a key, a hook, a task, or a paragraph.
 
 Component by component:
 
-| Component | Needs to exist? | Already solved? | Smallest form |
-|---|---|---|---|
-| `artifact_notebooks` key in the generated `pyproject.toml` | Yes — an empty, commented key is how a user discovers the feature exists | No | One commented line |
-| `poe check` | Yes — reason 1 | No | One `cmd` task |
-| `poe html` | Yes — reason 2 | No | One `cmd` task |
-| `juplit check` pre-commit hook | Yes — reason 1; the template already installs `juplit sync` the same way | No | Four lines beside the existing hook |
-| `juplit check` CI step | Yes — the hook only protects committers, not the merge | No | One `run:` line |
-| `.juplit/` in `.gitignore` | Yes — kernel sessions, logs, sockets and the `last-run` cache are local state | No | One line |
-| Un-ignore comment in `.gitignore` | Yes — issue #3: preserved-but-never-committed is indistinguishable from the feature not working | No | Two comment lines |
-| `notebook_src_dir` → `notebook_src_dirs` | Yes, incidentally — the template still emits the legacy singular key, and `docs/` is not scanned at all in a generated project | No | One line |
-| `juplit_version` default bump | Yes — the generated project must not resolve to a juplit without these commands | No | One JSON value |
-| An example `experiments/` notebook | **No — cut** | — | Spec out of scope: *"a template is a file you copy"*. An example artifact notebook would also have to ship committed outputs, which cookiecutter cannot produce. |
-| A `poe kernel` / `poe run` task | **No — cut** | — | They take a notebook path and a snippet; they are agent commands, used as `juplit …` directly. Putting them in the poe table would imply a repo-wide default that does not exist. |
+- **`artifact_notebooks` key in the generated `pyproject.toml`**
+  - *Needs to exist:* yes — an empty, commented key is how a user discovers the feature exists at all.
+  - *Already solved:* no. *Smallest form:* one commented line.
+- **`poe check`**
+  - *Needs to exist:* yes — reason 1 above.
+  - *Already solved:* no. *Smallest form:* one `cmd` task.
+- **`poe html`**
+  - *Needs to exist:* yes — reason 2 above.
+  - *Already solved:* no. *Smallest form:* one `cmd` task.
+- **`juplit check` pre-commit hook**
+  - *Needs to exist:* yes — reason 1; the template already installs `juplit sync` the same way.
+  - *Already solved:* no. *Smallest form:* four lines beside the existing hook.
+- **`juplit check` CI step**
+  - *Needs to exist:* yes — the hook only protects committers, not the merge.
+  - *Already solved:* no. *Smallest form:* one `run:` line.
+- **`.juplit/` in `.gitignore`**
+  - *Needs to exist:* yes — kernel sessions, logs, sockets and the `last-run` cache are local state.
+  - *Already solved:* no. *Smallest form:* one line.
+- **Un-ignore comment in `.gitignore`**
+  - *Needs to exist:* yes — issue #3: preserved-but-never-committed is indistinguishable from the feature not working.
+  - *Already solved:* no. *Smallest form:* two comment lines.
+- **`notebook_src_dir` → `notebook_src_dirs`**
+  - *Needs to exist:* yes, incidentally — the template still emits the legacy singular key, so `docs/` is not scanned at all in a generated project.
+  - *Already solved:* no. *Smallest form:* one line.
+- **`juplit_version` default bump**
+  - *Needs to exist:* yes — the generated project must not resolve to a juplit without these commands.
+  - *Already solved:* no. *Smallest form:* one JSON value.
+
+**Cut outright:**
+
+- **An example `experiments/` notebook** — spec out of scope: *"a template is a file you copy"*. An example artifact notebook would also have to ship committed outputs, which cookiecutter cannot produce.
+- **A `poe kernel` / `poe run` task** — they take a notebook path and a snippet; they are agent commands, used as `juplit …` directly. Putting them in the poe table would imply a repo-wide default that does not exist.
 
 ---
 
