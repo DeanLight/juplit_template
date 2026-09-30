@@ -9,11 +9,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    # Only the explicit `uv sync` below installs. poe runs its tasks through `uv run`, which
+    # would otherwise re-sync the default groups (dev included) onto the runner.
+    env:
+      UV_NO_SYNC: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
         with:
           enable-caching: true
-      - run: uv sync --all-groups
+      - run: uv sync --no-default-groups --group test
       - run: uv run pytest
       - run: uv run poe check

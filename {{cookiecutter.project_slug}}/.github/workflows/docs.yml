@@ -7,6 +7,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Only the explicit `uv sync` below installs. poe runs its tasks through `uv run`, which
+    # would otherwise re-sync the default groups (dev included) onto the runner.
+    env:
+      UV_NO_SYNC: "1"
     permissions:
       contents: write
     steps:
@@ -14,6 +18,6 @@ jobs:
       - uses: astral-sh/setup-uv@v5
         with:
           enable-caching: true
-      - run: uv sync --all-groups
+      - run: uv sync --no-default-groups --group docs
       - run: uv run poe nb       # generate .ipynb from .py before building docs
       - run: uv run mkdocs gh-deploy --force

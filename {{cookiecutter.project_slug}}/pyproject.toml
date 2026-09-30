@@ -14,16 +14,26 @@ build-backend = "uv_build"
 module-root = ""
 
 [dependency-groups]
-dev = [
+# CI syncs only the group it needs (`uv sync --no-default-groups --group test`), never
+# `--all-groups`, so a dev-only dependency never has to install on a runner.
+test = [
     "juplit{{cookiecutter.juplit_version}}",
     "poethepoet>=0.25.0",
-    "ipykernel>=6.0.0",
-    "pre-commit>=3.0.0",
     "pytest>=8.0.0",
+]
+docs = [
+    "juplit{{cookiecutter.juplit_version}}",
+    "poethepoet>=0.25.0",
     "mkdocs>=1.5.0",
     "mkdocs-material>=9.0.0",
     "mkdocs-jupyter>=0.24.0",
     "mkdocstrings[python]>=0.24.0",
+]
+dev = [
+    {include-group = "test"},
+    {include-group = "docs"},
+    "ipykernel>=6.0.0",
+    "pre-commit>=3.0.0",
 ]
 
 [tool.poe.tasks]
